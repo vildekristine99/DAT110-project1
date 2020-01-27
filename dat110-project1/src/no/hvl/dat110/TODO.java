@@ -1,7 +1,7 @@
 package no.hvl.dat110;
 
 public class TODO {
-
+//Vilde
 	public static String method() {
 		
 		String methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
