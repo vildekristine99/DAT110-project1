@@ -1,7 +1,7 @@
 package no.hvl.dat110;
 
 public class TODO {
-//Vilde
+
 	public static String method() {
 		
 		String methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
@@ -12,7 +12,7 @@ public class TODO {
 	
 	public static String construtor(String className) {
 				
-	   return "KonstruktÃ¸ren for klassen " + className + " er ikke implementert";
+	   return "Konstruktøren for klassen " + className + " er ikke implementert";
 		
 	}
 
