@@ -12,40 +12,57 @@ public class RPCUtils {
 	// RPC message syntax [rpcid,parameter/return value]
 	
 	public static byte[] marshallString(byte rpcid, String str) {
-
-		byte[] encoded;
-
+		byte[] strArray = str.getBytes();
+		byte[] encoded = new byte[strArray.length + 1];
+		
+		try {
+			encoded[0] = rpcid;
+			
+			for(int i = 1; i < encoded.length; i++) {
+				encoded[i] = strArray[i-1];
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		// TODO: marshall RPC identifier and string into byte array
 
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+		
+//		if (true) {
+//			throw new UnsupportedOperationException(TODO.method());
+//		}
 
 		return encoded;
 	}
 
 	public static String unmarshallString(byte[] data) {
 
-		String decoded;
+		String decoded = "";
+		
+		try {
+			decoded = new String(Arrays.copyOfRange(data, 1, data.length));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
 		// TODO: unmarshall String contained in data into decoded
 
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+//		if (true) {
+//			throw new UnsupportedOperationException(TODO.method());
+//		}
 
 		return decoded;
 	}
 
 	public static byte[] marshallVoid(byte rpcid) {
 
-		byte[] encoded;
+		byte[] encoded = new byte[1];
+		encoded[0] = rpcid;
 
 		// TODO: marshall RPC identifier in case of void type
 
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+//		if (true) {
+//			throw new UnsupportedOperationException(TODO.method());
+//		}
 
 		return encoded;
 
@@ -79,26 +96,40 @@ public class RPCUtils {
 
 	public static byte[] marshallInteger(byte rpcid, int x) {
 
-		byte[] encoded;
+		byte[] encoded = new byte[1+4];
 
 		// TODO: marshall RPC identifier and string into byte array
 
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
+		try {
+			encoded[0] = rpcid;
+			encoded[1] = (byte)(x >> 24);
+			encoded[2] = (byte)(x >> 16);
+			encoded[3] = (byte)(x >> 8);
+			encoded[4] = (byte)(x >> 0);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
+		
+//		if (true) {
+//			throw new UnsupportedOperationException(TODO.method());
+//		}
 
 		return encoded;
 	}
 
 	public static int unmarshallInteger(byte[] data) {
 
-		int decoded;
+		int decoded = 0;
 
 		// TODO: unmarshall integer contained in data
-
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
+		try {
+			decoded = data[1] << 24 | (data[2] & 0xFF ) << 16 | (data[3] & 0xFF ) << 8 | (data[4] & 0xFF );
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+//		if (true) {
+//			throw new UnsupportedOperationException(TODO.method());
+//		}
 
 		return decoded;
 
