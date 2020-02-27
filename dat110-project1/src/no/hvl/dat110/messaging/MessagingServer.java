@@ -37,10 +37,7 @@ public class MessagingServer {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		
-//		if (true) {
-//			throw new UnsupportedOperationException(TODO.method());
-//		}
+
 
 		return connection;
 

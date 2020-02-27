@@ -32,9 +32,7 @@ public class Controller  {
 		
 		displayclient.register(display);
 		sensorclient.register(sensor);
-//		if (true) {
-//			throw new UnsupportedOperationException(TODO.method());
-//		}
+
 		
 		// register stop methods in the RPC layer
 		displayclient.register(stopdisplay);
@@ -52,9 +50,6 @@ public class Controller  {
 				e.printStackTrace();
 			}
 		}
-//		if (true) {
-//			throw new UnsupportedOperationException(TODO.method());
-//			}
 		
 		stopdisplay.stop();
 		stopsensor.stop();
